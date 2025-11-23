@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.chitchat.feature_auth.test"> <!-- The .test suffix is important -->
+
+    <!-- This is needed to allow Hilt to work in tests -->
+    <application android:name="dagger.hilt.android.testing.HiltTestApplication" >
+        <!-- This is the crucial declaration -->
+        <activity
+            android:name="com.example.chitchat.feature_auth.HiltTestActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ChitChat"/>
+    </application>
+
+</manifest>
