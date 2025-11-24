@@ -21,12 +21,6 @@ This project demonstrates core messaging functionality using standard Android co
 ChitChatApp is a lightweight, easy-to-understand chat application created for Android.  
 It enables one-to-one messaging with simple UI screens such as Login, Signup, Profile, Chat, and Conversation.
 
-This project is ideal for developers learning:
-- Messaging UI design  
-- Basic chat architecture  
-- User interface flows  
-- Android app structure  
-
 ## Features
 
 - User login and sign-up  
