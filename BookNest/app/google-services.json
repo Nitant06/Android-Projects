@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "291027739187",
+    "project_id": "booknest-app-8d2ea",
+    "storage_bucket": "booknest-app-8d2ea.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291027739187:android:eb5623a51b9fc9085c7946",
+        "android_client_info": {
+          "package_name": "com.example.booknest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe08dTczKMXAXb7WYaCjb2q33zqZRamp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
