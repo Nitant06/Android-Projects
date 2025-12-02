@@ -22,9 +22,9 @@ class GeminiService (
             
             Return ONLY a valid JSON object with no markdown formatting. The JSON must match this structure:
             {
-              "title": "...",
-              "type": "...",
-              "summary": "..."
+              "title": "String",
+              "type": "String",
+              "summary": "String (Do NOT use an array. Use a single string with newlines for bullet points)"
             }
             
             Here is the text:

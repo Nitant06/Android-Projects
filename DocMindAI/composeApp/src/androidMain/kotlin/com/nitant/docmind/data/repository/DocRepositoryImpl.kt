@@ -9,6 +9,10 @@ import com.nitant.docmind.domain.models.Document
 import com.nitant.docmind.domain.repository.DocRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.json.contentOrNull
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonPrimitive
 
 class DocRepositoryImpl(
     private val dao: DocumentDao,
@@ -38,11 +42,23 @@ class DocRepositoryImpl(
         return try {
             val aiResult = aiService.analyzeDocument(text)
 
+            val cleanSummary = try {
+                if (aiResult.summary is JsonArray) {
+                    aiResult.summary.jsonArray.joinToString("\n") {
+                        "- ${it.jsonPrimitive.contentOrNull ?: ""}"
+                    }
+                } else {
+                    aiResult.summary.jsonPrimitive.contentOrNull ?: "No summary available"
+                }
+            } catch (_: Exception) {
+                "Summary could not be parsed."
+            }
+
             // Save to DB
             val entity = SavedDocument(
                 title = aiResult.title,
                 type = aiResult.type.uppercase(),
-                summary = aiResult.summary,
+                summary = cleanSummary,
                 imagePath = imagePath,
                 timestamp = System.currentTimeMillis()
             )

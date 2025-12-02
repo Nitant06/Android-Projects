@@ -1,6 +1,7 @@
 package com.nitant.docmind.data
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 
 // Request Gemini
 
@@ -35,5 +36,5 @@ data class Candidate(
 data class AiResult(
     val title: String,
     val type: String,
-    val summary: String
+    val summary: JsonElement
 )
