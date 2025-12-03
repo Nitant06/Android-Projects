@@ -4,7 +4,7 @@ ChitChat is a full-stack, real-time messaging application for Android, built ent
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 | Login | Sign Up | Conversations (Active) |
 | :---: | :---: | :---: |
@@ -16,7 +16,7 @@ ChitChat is a full-stack, real-time messaging application for Android, built ent
 
 ---
 
-## ✨ Features
+## Features
 
 - **Full Authentication Flow:** Secure user sign-up, login, and session persistence.
 - **Real-time One-on-One Messaging:** Send and receive messages instantly with a real-time listener.
@@ -30,7 +30,7 @@ ChitChat is a full-stack, real-time messaging application for Android, built ent
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 This project was built with a focus on modern, scalable, and maintainable practices.
 
@@ -64,7 +64,7 @@ This project was built with a focus on modern, scalable, and maintainable practi
 
 ---
 
-## 🚀 Setup and Installation
+##  Setup and Installation
 
 To run this project, you will need to set up your own Firebase project.
 
