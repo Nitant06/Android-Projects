@@ -1,73 +1,61 @@
-# BookNest
+# BookNest - Modern Android Hotel Booking App
 
-BookNest is a modern Hotel Booking Android application built using Jetpack Compose.  
-It provides a seamless UI flow starting from onboarding and authentication to browsing hotels, selecting rooms, confirming bookings, completing payments, and checking booking status.
+BookNest is a feature-rich, native Android application built using **Kotlin** and **Jetpack Compose**. It follows modern Android development practices (MVVM, Hilt, Coroutines) to provide a seamless experience for browsing hotels, viewing details, and making secure bookings with payment integration.
 
 ---
 
 ## Features
 
-- Splash + Intro navigation
-- Signup with phone authentication (OTP verification)
-- Home screen with destination entry
-- Hotel and room browsing UI
-- Room selection with pricing breakdown
-- Razorpay secure payment integration
-- Transaction summary post-payment
-- FAQ / Support section
-- Clean Material UI using Jetpack Compose
+*   **Authentication**: Secure Sign-up and Login using **Firebase Phone Authentication (OTP)**.
+*   **Smart Search**: Search hotels by City, Check-in/Check-out dates, and number of rooms.
+*   **Hotel Browsing**: View recommended places ("Where2Go") and browse hotels with dynamic pricing breakdown.
+*   **Room Selection**: Select specific room types (Standard, Deluxe, Suite) with real-time price calculation including GST.
+*   **Secure Payments**: Integrated **Razorpay Payment Gateway** for processing booking transactions.
+*   **Booking Management**: View booking summaries and transaction status.
+*   **Support**: FAQ section for user assistance.
+*   **Modern UI**: Fully responsive Material 3 Design with Dark/Light mode support.
+
+---
+
+## Screenshots
+
+| Onboarding & Auth | Search & Home | Hotel Selection |
+|:---:|:---:|:---:|
+| <img src="./screenshots/splashscreen.png" width="200"/> <img src="./screenshots/signup_screen.png" width="200"/> | <img src="./screenshots/otp_screen.png" width="200"/> <img src="./screenshots/homepage_screen.png" width="200"/> | <img src="./screenshots/where2go_screen.png" width="200"/> <img src="./screenshots/select_hotel_screen.png" width="200"/> |
+
+| Room & Details | Checkout & Payment | Status & Support |
+|:---:|:---:|:---:|
+| <img src="./screenshots/select_room_screen.png" width="200"/> <img src="./screenshots/details_screen.png" width="200"/> | <img src="./screenshots/checkout_screen.png" width="200"/> <img src="./screenshots/razorpay_payment_screen.png" width="200"/> | <img src="./screenshots/payment_successful_screen.png" width="200"/> <img src="./screenshots/faq_screen.png" width="200"/> |
 
 ---
 
 ## Tech Stack
 
-| Category | Technology |
-|---------|------------|
-| Language | Kotlin |
-| UI | Jetpack Compose, Material 3 |
-| Architecture | MVVM |
-| Auth | Firebase Phone Authentication |
-| Payments | Razorpay SDK |
-| Navigation | Jetpack Navigation Compose |
-| State Management | ViewModel, StateFlow |
-| Build | Gradle Kotlin DSL |
+*   **Language**: [Kotlin](https://kotlinlang.org/)
+*   **UI Toolkit**: [Jetpack Compose](https://developer.android.com/jetpack/compose) (Material 3)
+*   **Architecture**: MVVM (Model-View-ViewModel) + Clean Architecture principles
+*   **Dependency Injection**: [Dagger Hilt](https://dagger.dev/hilt/)
+*   **Navigation**: Jetpack Navigation Compose
+*   **Backend & Database**: 
+    *   Firebase Realtime Database
+    *   Firebase Authentication (Phone/OTP)
+*   **Image Loading**: [Coil](https://coil-kt.github.io/coil/)
+*   **Payments**: Razorpay Android SDK
+*   **Asynchronous Programming**: Coroutines & Flow
 
 ---
 
-## App Flow & Screenshots
-
-| Step | Screen | Preview |
-|------|--------|---------|
-| 1 | Splash Screen | ![Splash](./screenshots/splashscreen.png) |
-| 2 | Signup Screen | ![Signup](./screenshots/signup_screen.png) |
-| 3 | OTP Verification | ![OTP](./screenshots/otp_screen.png) |
-| 4 | Homepage (Search Destination) | ![Homepage](./screenshots/homepage_screen.png) |
-| 5 | Hotel Selection Screen | ![Select Hotel](./screenshots/select_hotel_screen.png) |
-| 6 | Room Listing Screen | ![Select Room](./screenshots/select_room_screen.png) |
-| 7 | Room Details Screen | ![Details](./screenshots/details_screen.png) |
-| 8 | Checkout Screen | ![Checkout](./screenshots/checkout_screen.png) |
-| 9 | Razorpay Payment UI | ![Razorpay](./screenshots/razorpay_payment_screen.png) |
-| 10 | Transaction Page | ![Transaction](./screenshots/transaction_page.png) |
-| 11 | Payment Success Screen | ![Success](./screenshots/payment_successful_screen.png) |
-| 12 | FAQ / Support Screen | ![FAQ](./screenshots/faq_screen.png) |
-
-
 ## Project Structure
 
-app/
-├─ data/
-├─ ui/
-│ ├─ screens/…
-│ ├─ navigation/
-├─ util/
-├─ MainActivity.kt
-
-## Firebase Requirements
-### Enable Phone Authentication
-
-## Razorpay Setup
-
-### Place your test/live key here:
-
-const val RAZORPAY_KEY_ID = "YOUR_KEY"
-
+```text
+com.example.booknest
+├── data
+│   ├── model          # Data classes (Hotel, Room, Place, User)
+│   └── repository     # AuthRepository, HomeRepository (Firebase implementation)
+├── di                 # Hilt Modules (AppModule)
+├── ui
+│   ├── navigation     # NavHost and Screen Routes
+│   ├── screens        # Composable Screens (Checkout, FindRoom, Details, etc.)
+│   └── theme          # Type, Color, Theme (Material 3)
+├── util               # Constants, RazorpayManager, Resource wrappers
+└── MainActivity.kt    # Entry point & PaymentResultListener
