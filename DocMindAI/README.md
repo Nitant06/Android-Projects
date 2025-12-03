@@ -1,4 +1,4 @@
-# 🧠 DocMind AI - Intelligent Document Assistant
+# DocMind AI - Intelligent Document Assistant
 
 ![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android)
 ![Kotlin](https://img.shields.io/badge/Language-Kotlin-7F52FF?style=for-the-badge&logo=kotlin)
@@ -12,32 +12,27 @@ Built with **Strict Clean Architecture**, **Kotlin Multiplatform (KMP)** structu
 
 ---
 
-## 📱 Screenshots
+## Screenshots
 
-| Home Screen |
-|:---:|
-<img src="Screenshots%20and%20video/home_screen.jpg" width="200"/> |
-
-### 🎥 App Demo
-Click the link below to watch the full working demonstration:
-
-[**▶️ Watch DocMind App Demo Video**](Screenshots%20and%20video/DocMind_App_Demo.mp4)
+| Home Screen | App Demo |
+|:---:|:---:|
+<img src="Screenshots%20and%20video/home_screen.jpg" width="200"/> | ![**DocMind App Demo**](Screenshots%20and%20video/DocMind_App_Demo_GIF.gif)
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-*   **📸 Smart Scanning:** Custom Camera implementation using **CameraX**.
-*   **👁️ On-Device OCR:** Instantly extracts text from images using **Google ML Kit** (Offline capable).
-*   **🧠 AI Intelligence:** Uses **Google Gemini 2.0 Flash** to analyze text, auto-detect document type (Invoice, Receipt, Note), and generate concise summaries.
-*   **📂 Organized Storage:** Persists data locally using **Room Database**.
-*   **🎨 Modern UI:** Fully built with **Jetpack Compose** and Material 3 Design.
-*   **🔄 Resilience:** robust parsing logic that handles unstructured AI responses gracefully.
-*   **🚀 CI/CD Pipeline:** Automated testing and APK generation using **GitHub Actions**.
+*   **Smart Scanning:** Custom Camera implementation using **CameraX**.
+*   **On-Device OCR:** Instantly extracts text from images using **Google ML Kit** (Offline capable).
+*   **AI Intelligence:** Uses **Google Gemini 2.0 Flash** to analyze text, auto-detect document type (Invoice, Receipt, Note), and generate concise summaries.
+*   **Organized Storage:** Persists data locally using **Room Database**.
+*   **Modern UI:** Fully built with **Jetpack Compose** and Material 3 Design.
+*   **Resilience:** robust parsing logic that handles unstructured AI responses gracefully.
+*   **CI/CD Pipeline:** Automated testing and APK generation using **GitHub Actions**.
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 The app follows **Strict Clean Architecture** with **MVVM** pattern, ensuring separation of concerns and testability.
 
@@ -54,7 +49,7 @@ The app follows **Strict Clean Architecture** with **MVVM** pattern, ensuring se
 *   **Navigation:** Type-Safe Navigation Compose
 *   **Build System:** Gradle (Kotlin DSL) + Version Catalog (`libs.versions.toml`)
 
-### 🏗️ Architecture Overview
+### Architecture Overview
 
 ```mermaid
 graph TD
