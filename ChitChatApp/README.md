@@ -1,144 +1,105 @@
-# ChitChatApp
+# ChitChat App - A Modern Android Messaging Application
 
-A modern Android real-time chat application featuring user authentication, contact lists, and clean chat UI screens.  
-This project demonstrates core messaging functionality using standard Android components and best practices.
+ChitChat is a full-stack, real-time messaging application for Android, built entirely with modern, native technologies. It showcases a robust, multi-module Clean Architecture and integrates a suite of Firebase services to provide a complete, end-to-end user experience, including an on-device AI feature for smart replies.
 
-## Table of Contents
-- Introduction
-- Features
-- Screenshots
-- Installation
-- Usage
-- Project Structure
-- Dependencies
-- Configuration
-- Troubleshooting
-- Contributors
-- License
+---
 
-## Introduction
+## 📸 Screenshots
 
-ChitChatApp is a lightweight, easy-to-understand chat application created for Android.  
-It enables one-to-one messaging with simple UI screens such as Login, Signup, Profile, Chat, and Conversation.
+| Login | Sign Up | Conversations (Active) |
+| :---: | :---: | :---: |
+| ![Login Screen](login.png) | ![Sign Up Screen](SignUp.png) | ![Conversations Screen](conversation_screen.png) |
 
-## Features
+| New Chat | Chat Screen | Profile (Edit) | Other User Profile (View) |
+| :---: | :---: | :---: | :---: |
+| ![New Chat Screen](new_chat_screen.png) | ![Chat Screen](chat_screen.png) | ![Profile Screen](profile_screen.png) | ![Other User Profile Screen](other_user_profile_screen.png) |
 
-- User login and sign-up  
-- One-to-one real-time chat  
-- Clean UI with multiple screens  
-- User profile screens  
-- Chat list, new chat view, and conversation view  
-- Fast and simple application flow  
+---
 
-## Screenshots
+## ✨ Features
 
-### Login
-![Login](login.png)
+- **Full Authentication Flow:** Secure user sign-up, login, and session persistence.
+- **Real-time One-on-One Messaging:** Send and receive messages instantly with a real-time listener.
+- **Rich Conversation List:** Displays active chats sorted by the most recent message, including the last message text and timestamp.
+- **User Discovery:** A dedicated screen to find and start conversations with other registered users.
+- **User Profiles & Image Uploads:** Users can set their display name and upload a profile picture, which is stored in Firebase Cloud Storage.
+- **On-Device AI Smart Replies:** The app suggests contextual, one-tap replies to incoming messages using Google's ML Kit.
+- **Push Notifications:** Receive notifications for new messages even when the app is in the background or closed, powered by Firebase Cloud Messaging and Cloud Functions.
+- **Swipe-to-Delete:** Easily delete conversations with an intuitive swipe gesture.
+- **Modern, Branded UI:** A clean, consistent, and attractive user interface built with Material Design 3.
 
-### Sign-Up
-![Sign Up](SignUp.png)
+---
 
-### Chat Screen
-![Chat Screen](chat_screen.png)
+## 🛠️ Tech Stack & Architecture
 
-### Conversation Screen
-![Conversation Screen](conversation_screen.png)
+This project was built with a focus on modern, scalable, and maintainable practices.
 
-### New Chat Screen
-![New Chat Screen](new_chat_screen.png)
+### **Architecture**
+- **Clean Architecture:** Separates the app into three distinct layers (Presentation, Domain, Data) for clear separation of concerns.
+- **MVVM (Model-View-ViewModel):** The core pattern within the Presentation layer.
+- **Modularization:** The project is split into `:app`, `:core`, and feature modules (`:feature_auth`, `:feature_chat`, `:feature_conversations`, `:feature_profile`) to simulate a professional team environment and ensure feature independence.
+- **Repository Pattern:** Acts as a single source of truth for all data.
 
-### Profile Screen
-![Profile Screen](profile_screen.png)
+### **UI**
+- **Jetpack Compose:** 100% of the UI is built declaratively.
+- **Material Design 3:** For theming, components, and a modern aesthetic.
+- **Coil:** For efficient, asynchronous image loading.
 
-### Other User Profile
-![Other User Profile](other_user_profile_screen.png)
+### **Backend & Data**
+- **Firebase Authentication:** For user management.
+- **Cloud Firestore:** As the real-time, NoSQL database.
+- **Firebase Cloud Storage:** For hosting user-uploaded profile pictures.
+- **Firebase Cloud Messaging (FCM):** For push notifications.
+- **Cloud Functions for Firebase:** Server-side TypeScript logic to trigger notifications.
 
-### App Icon
-![App Icon](app_icon.png)
+### **Asynchronous Programming**
+- **Kotlin Coroutines & Flows:** Used for all background tasks and for observing real-time data streams from Firestore.
 
-## Installation
+### **Dependency Injection**
+- **Hilt:** For managing dependencies throughout the entire application.
 
-Clone the repository:
+### **Testing**
+- **Unit Tests (JUnit & MockK):** Written for ViewModels to test business logic in isolation.
+- **UI / Instrumented Tests (Compose Test Rule & Hilt):** Written to verify user flows and UI state changes.
 
-```
-git clone https://github.com/Nitant06/Android-Projects.git
-cd Android-Projects/ChitChatApp
-```
+---
 
-Open the project in Android Studio:
+## 🚀 Setup and Installation
 
-1. Open Android Studio and select Open Project  
-2. Choose the ChitChatApp folder  
-3. Allow Gradle to sync  
-4. Connect a device or run an emulator  
-5. Click Run  
+To run this project, you will need to set up your own Firebase project.
 
-## Usage
+1.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/YourUsername/YourRepoName.git
+    ```
 
-1. Install and launch the app  
-2. Create an account through the sign-up screen  
-3. Log in with valid credentials  
-4. View available users or start a new chat  
-5. Select a user to begin a conversation  
-6. Send and receive messages  
-7. View and edit profile settings  
+2.  **Firebase Setup:**
+    - Go to the [Firebase Console](https://console.firebase.google.com/) and create a new project.
+    - **Register the App:** Add a new Android app to the project with the package name `com.example.chitchat` (or your chosen package name).
+    - **Download `google-services.json`:** Download the configuration file and place it in the `app/` directory of the project.
+    - **Enable Services:** In the Firebase Console, enable the following services:
+        - **Authentication:** Enable the "Email/Password" sign-in method.
+        - **Firestore Database:** Create a new database and start in "test mode".
+        - **Storage:** Create a new storage bucket and start in "test mode".
 
-## Project Structure
+3.  **Create Firestore Index:**
+    - In the Firestore Database section, go to the **Indexes** tab.
+    - Create a new **Composite Index** with the following configuration:
+        - **Collection ID:** `conversations`
+        - **Fields to index:**
+            1. `participants` -> `Array-contains`
+            2. `lastMessageTimestamp` -> `Descending`
+    - Wait for the index to be fully built and enabled.
 
-```
-ChitChatApp/
-│── app/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/        
-│   │   │   ├── res/         
-│   │   │   └── AndroidManifest.xml
-│── build.gradle.kts
-│── gradle.properties
-│── image assets (.png)
-│── README.md
-```
+4.  **Deploy Cloud Function:**
+    - Navigate to the `ChitChatFunctions` directory (or wherever you saved the function code).
+    - Run the following commands in your terminal:
+      ```bash
+      npm install
+      firebase deploy --only functions
+      ```
 
-## Dependencies
-
-Expected dependencies include:
-
-- AndroidX AppCompat  
-- Material Components  
-- RecyclerView  
-- ViewBinding or DataBinding  
-- Firebase services (optional depending on setup)  
-- Kotlin Standard Library  
-
-## Configuration
-
-If Firebase integration is used:
-
-1. Create a Firebase project  
-2. Add your Android package  
-3. Download google-services.json  
-4. Place it in the following directory:  
-```
-app/google-services.json
-```
-5. Enable:
-   - Firebase Authentication  
-   - Firebase Realtime Database or Firestore  
-
-## Troubleshooting
-
-| Issue | Solution |
-|-------|----------|
-| Gradle sync failure | Ensure correct SDK versions and update dependencies |
-| Authentication not working | Verify configuration in Firebase Console |
-| Messages not appearing | Check database rules and message listener logic |
-| App crashes on launch | Inspect Logcat for resource or null-pointer issues |
-
-## Contributors
-
-- Nitant06 – Creator and Maintainer  
-
-Contributions through issues and pull requests are welcome.
+5.  **Build and Run:** Open the project in Android Studio, let Gradle sync, and run the app on an emulator or a physical device.
 
 ## License
 
